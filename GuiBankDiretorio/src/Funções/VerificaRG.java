@@ -12,15 +12,22 @@ public class VerificaRG {
         return false;
     }
 
+    public static String arrayToString(String rgString){
+        int[]rg = stringToArray(rgString);
+        String rgToString = "";
+        for (int i = 0; i < rg.length; i++){
+            rgToString += String.valueOf(rg[i]);
+        }
+        return rgToString;
+    }
+
 
     private static int rgArraySoma(int[] array){
        int mult = 9;
         int soma = 0;
-        int breakPointer = 0;
-        for (int i = 0 ; i < 7 ; i++) {
-            soma += array[breakPointer] * mult;
+        for (int i = 0 ; i <= 7; i++) {
+            soma += array[i] * mult;
             mult--;
-            breakPointer++;
         }
         return soma;
     }

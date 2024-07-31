@@ -17,6 +17,16 @@ public class VerificaCPF {
      return false;
     }
 
+    public static String arrayToString(String cpf){
+        int[] cpfArray = formataroCPForiginal(cpf);
+        String respString = "";
+        for (int a = 0; a < cpfArray.length; a++) {
+            respString += String.valueOf(cpfArray[a]);
+        }
+        return respString;
+    }
+
+
     private static int[] formataroCPForiginal(String cpf){
         int[] cpfArray = new int[11];
         int pointer = 0;
@@ -91,31 +101,28 @@ public class VerificaCPF {
     private static int cpfArraySomaPrimeiroDigito(int[] array){
         int mult = 10;
         int soma = 0;
-        int breakPointer = 0;
-        for (int i = 0 ; i < 8 ; i++) {
-            soma += array[breakPointer] * mult;
+        int aux = 0;
+        for (int i = 0 ; i < array.length ; i++) {
+            aux = array[i] * mult;
+            soma = aux + soma;
             mult--;
-            breakPointer++;
         }
         return soma;
     }
 
     private static int[] cpfArraySomaSegundoDigito(int[] cpf){
-
         int mult = 11;
         int soma = 0;
-        int breakPointer = 0;
-        for (int i = 0 ; i < 10 ; i++) {
-            soma += cpf[breakPointer] * mult;
+        for (int i = 0 ; i < cpf.length ; i++) {
+            soma += cpf[i] * mult;
             mult--;
-            breakPointer++;
         }
         int digito = 0;
         int[] cpfNovo = new int[11];
         for (int i = 0; i < cpf.length ; i++) {
             cpfNovo[i] = cpf[i];
         }
-        if(soma % 11 <2 ){
+        if(soma % 11 < 2 ){
             cpfNovo[cpfNovo.length - 1] = digito;
         }else {
             int a = soma % 11;

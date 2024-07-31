@@ -1,26 +1,22 @@
 package Model;
 
+import java.sql.Date;
+
 public class User {
     private String nome;
     private String sobrenome;
     private double Saldo;
     private String cpf;
     private String rg;
-    private String numConta;
-    private String agencia;
+    private Date nascimento;
 
 
+    public Date getNascimento() {
+        return nascimento;
+    }
 
-
-
-    public User(String nome, String sobrenome, double saldo, String cpf, String rg, String numConta, String agencia) {
-        this.nome = nome;
-        this.sobrenome = sobrenome;
-        Saldo = saldo;
-        this.cpf = cpf;
-        this.rg = rg;
-        this.numConta = numConta;
-        this.agencia = agencia;
+    public void setNascimento(Date nascimento) {
+        this.nascimento = nascimento;
     }
 
     public String getNome() {
@@ -29,22 +25,6 @@ public class User {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getAgencia() {
-        return agencia;
-    }
-
-    public void setAgencia(String agencia) {
-        this.agencia = agencia;
-    }
-
-    public String getNumConta() {
-        return numConta;
-    }
-
-    public void setNumConta(String numConta) {
-        this.numConta = numConta;
     }
 
     public String getRg() {

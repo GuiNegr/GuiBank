@@ -7,8 +7,6 @@ public class VerificaCPF {
     public static boolean verificaCPF(String CpfOriginal){
      int[] cpfFormatado =  formataroCPForiginal(CpfOriginal);
      int[] CpfDigitoCriado = cpfArraySomaSegundoDigito(primeiroDigito(CpfOriginal));
-
-
      if(cpfFormatado[cpfFormatado.length - 1] == CpfDigitoCriado[CpfDigitoCriado.length - 1]
      && cpfFormatado[cpfFormatado.length - 2] == CpfDigitoCriado[CpfDigitoCriado.length - 2]
      ){

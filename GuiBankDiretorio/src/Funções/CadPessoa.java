@@ -1,36 +1,36 @@
 package Funções;
 
 import Comunicador.Conecta;
-import Model.User;
+import Model.Pessoa;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 public class CadPessoa {
 
-    public static boolean door(User user) {
-        if(VerificaRG.validarRg(user.getRg()) && VerificaCPF.verificaCPF(user.getCpf())){
-            cadPessoa(user);
+    public static boolean door(Pessoa pessoa) {
+        if (VerificaRG.validarRg(pessoa.getRg()) && VerificaCPF.verificaCPF(pessoa.getCpf())) {
+            cadPessoa(pessoa);
             return true;
         }
         return false;
     }
 
-    private static void cadPessoa(User user){
-        String sql = "insert into cadPessoa (nome,sobrenome,nascimento,saldoConta,cpf,rg) values  (?,?,?,?,?,?)";
 
-        try {
+    private static void cadPessoa(Pessoa pessoa) {
+       String sql = "insert into pessoa (nome,dataNascimento,cpf,rg) values  (?,?,?,?)";
+
+   try {
             Connection connection = Conecta.conecta();
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1,user.getNome());
-            preparedStatement.setString(2,user.getSobrenome());
-            preparedStatement.setDate(3,user.getNascimento());
-            preparedStatement.setDouble(4,user.getSaldo());
-            preparedStatement.setString(5,user.getCpf());
-            preparedStatement.setString(6, user.getRg());
+           PreparedStatement preparedStatement = connection.prepareStatement(sql);
+           preparedStatement.setString(1,pessoa.getNome());
+           preparedStatement.setDate(2,pessoa.getNascimento());
+            preparedStatement.setString(3,pessoa.getCpf());
+            preparedStatement.setString(4, pessoa.getRg());
             preparedStatement.execute();
         }catch (Exception e){
-            System.out.println("error cadPessoa"+e.getMessage());
+           System.out.println("error cadPessoa"+e.getMessage());
         }
     }
-}
+    }
+

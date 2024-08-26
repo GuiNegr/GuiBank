@@ -1,8 +1,8 @@
-package org.example.model.Pessoa;
+package org.example.model.pessoa;
 
 public class Tipo {
 
-    enum tipo{
+    public enum tipo{
         Cliente,
         Funcionario
     }

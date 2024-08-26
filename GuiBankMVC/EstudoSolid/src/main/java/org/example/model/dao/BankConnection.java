@@ -1,4 +1,4 @@
-package org.example.model.BancoDados;
+package org.example.model.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,7 +10,7 @@ public class BankConnection {
     private static final String PASSWORD = "root";
 
 
-    public Connection obterConexao(){
+    public static Connection obterConexao(){
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(URL,LOGIN,PASSWORD);

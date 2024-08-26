@@ -27,4 +27,25 @@ public class BankSelect {
             return id;
         }
     }
+    public static boolean returnIFcpfExist(String cpfOut){
+        String url = "select * from pessoas where CPF = ?";
+        String cpf = "";
+        try(
+                Connection connection = BankConnection.obterConexao();
+                PreparedStatement preparedStatement = connection.prepareStatement(url);
+        ){
+            preparedStatement.setString(1,cpfOut);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                cpf = resultSet.getString("CPF");
+            }
+            if(cpf.equals(cpfOut)){
+                return true;
+            }
+            return false;
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
 }

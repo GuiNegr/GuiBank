@@ -6,15 +6,15 @@ import org.example.model.funcionario.Funcionario;
 import org.example.model.pessoa.Pessoa;
 
 public class ClassManager {
-    BankAdd add;
+    private static BankAdd add;
 
-    public void adicionaNoBanco(Pessoa pessoa){
+    public static void adicionaNoBanco(Pessoa pessoa){
          add = new BankAdd();
          add.adicionaPessoa(pessoa);
          identify(pessoa);
     }
 
-    private void identify(Pessoa pessoa){
+    private static void identify(Pessoa pessoa){
         String identify = pessoa.getClass().getSimpleName();
          add = new BankAdd();
         if(identify.equals("Funcionario")){
